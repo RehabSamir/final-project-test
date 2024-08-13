@@ -1,0 +1,83 @@
+
+<div class="card mb-3">
+  <div class="card-header">
+    Sign Up with template
+  </div>
+  <div class="card-body">
+    <!-- // template driven form -->
+    <form (ngSubmit)="addUser()" #formRef="ngForm">
+      <!-- first name -->
+      <div class="form-group row mb-2">
+        <label for="firstName" class="col-md-2 col-form-label">First Name</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name" required
+            minlength="3" [(ngModel)]="user.firstName" name="firstname" #firstNameVar="ngModel" [ngClass]="{'is-invalid':(firstNameVar.touched||firstNameVar.dirty)&&firstNameVar.invalid,'is-valid':firstNameVar.valid}">
+
+            <span class="invalid-feedback">
+
+              @if(firstNameVar.errors?.['required']){
+                <span>First Name required</span>
+              }
+
+              @if(firstNameVar.errors?.['minlength']){
+                <span>First Name must be at least 3 characters</span>
+              }
+            </span>
+
+
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="lastNameId">Last Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="lastNameId"
+                 type="text"
+                 placeholder="Last Name"
+                 required
+                 pattern="[A-Za-z]{5,}"
+                 name="lastName"
+                 [(ngModel)]="user.lastName"
+
+                 #lastNameVar="ngModel"
+                 [ngClass]="{'is-invalid':( lastNameVar.touched||lastNameVar.dirty)&&!lastNameVar.valid,'is-valid':lastNameVar.valid}"
+                />
+
+                <span class="invalid-feedback">
+
+                    @if(lastNameVar.errors?.['required']){
+                      <span>Last Name required</span>
+                    }
+
+                    @if(lastNameVar.errors?.['pattern']){
+                      <span>Last Name must be at least 5 characters</span>
+                    }
+                  </span>
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="emailId">Email</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="emailId"
+                 type="email"
+                 placeholder="Email "
+                 required
+                 email
+                 [(ngModel)]="user.email"
+                 name="useremail"
+                 />
+
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<!-- <div class="card mb-3">
+    <div class="card-header">
+      {{ isEditMode ? 'Edit Product' : 'Add Product' }}
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="saveProduct()" #formRef="ngForm">
+        <div class="form-group row mb-2">
+          <label for="ProductName" class="col-md-2 col-form-label">Product Name</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control"
+              id="ProductName"
+              placeholder="Product Name (required)"
+              required
+              minlength="3"
+              [(ngModel)]="product.name"
+              name="Proname"
+              #productNameVar="ngModel"
+              [ngClass]="{
+                'is-invalid': (productNameVar.touched || productNameVar.dirty) && productNameVar.invalid,
+                'is-valid': productNameVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="productNameVar.errors?.['required']">Product Name required</span>
+              <span *ngIf="productNameVar.errors?.['minlength']">Product Name must be at least 3 characters</span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="price">Price</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="price"
+              type="number"
+              placeholder="Price (required)"
+              required
+              name="price"
+              [(ngModel)]="product.price"
+              #productPriceVar="ngModel"
+              [ngClass]="{
+                'is-invalid': (productPriceVar.touched || productPriceVar.dirty) && !productPriceVar.valid,
+                'is-valid': productPriceVar.valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="productPriceVar.errors?.['required']">Price required</span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="quantity">Quantity</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              id="quantity"
+              type="number"
+              placeholder="Quantity (required)"
+              required
+              [(ngModel)]="product.quantity"
+              name="quantity"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="formRef.invalid">
+          {{ isEditMode ? 'Update Product' : 'Add Product' }}
+        </button>
+        <button *ngIf="isEditMode" type="button" class="btn btn-danger" (click)="deleteProduct()">
+          Delete Product
+        </button>
+      </form>
+    </div>
+  </div>
+   -->
