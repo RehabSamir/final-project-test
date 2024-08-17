@@ -1,52 +1,62 @@
-<div class="row d-flex justify-content-center align-items-center ms-3 text-center">
-    @if (discount !== 'No discount') {
-        <h3  class='bg-danger text-light'>We offer an explicit discount of: {{ discount }}</h3>
-    }
-  </div>
-  
-  <div class="row d-flex justify-content-center align-items-center ms-3 text-center">
-    @for (product of productsAfterFilter; track $index) {
-    
-    
-      <div class="col-sm-3 ms-2" [routerLink]="['/Prd',product.id]"  [ngClass]="{'yellow-background': product.quantity === 1}">
-          <img *ngIf="showImg" [src]="product.ProductImgURL" class="img-fluid">
-          <h3>{{ product.name }}</h3>
-          <h4>{{ product.price }}</h4>
-    
-           
-        
-          @if (product.quantity > 0) {
-              <p  class="text-success">
-                  {{stockStatus(product) }}
-              </p>
-          }
-    
-          @if (product.quantity === 0) {
-              <p class="text-danger"> {{ stockStatus(product) }} </p>
-          }
-    
-          <button class="btn mb-2 w-100" style="background-color:#f68b1e" [disabled]="product.quantity==0" (click)="decrement(product)">Add To Cart <i class="fa-solid fa-cart-shopping"></i></button>
-         
-          @if (product.quantity > 0) {
-              <button class="btn mb-2 w-100" style="background-color:#4CAF50" [disabled]="product.quantity == 0" (click)="buyProduct(product)">Buy <i class="fa-solid fa-cart-shopping"></i></button>
-          }
-          <div>
-              @if (product.isPurchased) {
-                  <p>Thanks for purchasing from our Store, {{ clientName }}!</p>
-              }
-          </div>
-      
-      </div>
-    
-    
-          @if (productsAfterFilter.length === 0) {
-              <h2>
-              No products available
-             </h2>
-          }
-    
-         
-      }  
-    </div>
-    
+<div
+  class="row d-flex justify-content-center align-items-center ms-3 text-center"
+>
+  @if (discount !== 'No discount') {
+  <h3 class="bg-danger text-light">
+    We offer an explicit discount of: {{ discount }}
+  </h3>
+  }
+</div>
 
+<div
+  class="row d-flex justify-content-center align-items-center ms-3 text-center"
+>
+  @for (product of productsAfterFilter; track $index) {
+
+  <div
+    class="col-sm-3 ms-2"
+    [routerLink]="['/Prd', product.ID]"
+    [ngClass]="{ 'yellow-background': product.Quantity === 1 }"
+  >
+    <img *ngIf="showImg" [src]="product.ProductImgURL" class="img-fluid" />
+    <h3>{{ product.Name }}</h3>
+    <h4>{{ product.Price }}</h4>
+
+    @if (product.Quantity > 0) {
+    <p class="text-success">
+      {{ stockStatus(product) }}
+    </p>
+    } @if (product.Quantity === 0) {
+    <p class="text-danger">{{ stockStatus(product) }}</p>
+    }
+
+    <button
+      class="btn mb-2 w-100"
+      style="background-color: #f68b1e"
+      [disabled]="product.Quantity == 0"
+      (click)="decrement(product)"
+    >
+      Add To Cart <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+
+    @if (product.Quantity > 0) {
+    <button
+      class="btn mb-2 w-100"
+      style="background-color: #4caf50"
+      [disabled]="product.Quantity == 0"
+      (click)="buyProduct(product)"
+    >
+      Buy <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+    }
+    <div>
+      @if (product.isPurchased) {
+      <p>Thanks for purchasing from our Store, {{ clientName }}!</p>
+      }
+    </div>
+  </div>
+
+  @if (productsAfterFilter.length === 0) {
+  <h2>No products available</h2>
+  } }
+</div>

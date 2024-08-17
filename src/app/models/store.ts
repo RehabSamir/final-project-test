@@ -1,6 +1,5 @@
 export class Store {
-
-    constructor(public name:string="jumia",public logo:string='',public branches:string[]=['']) {
-   
-      }
+  Name: string | undefined;
+  Branches: string[] | undefined;
+  Logo: string | undefined;
 }
